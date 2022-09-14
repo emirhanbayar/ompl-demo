@@ -1,3 +1,0 @@
-/home/emirhan/ompl_tutorials/build/CMakeFiles/rebuild_cache.dir
-/home/emirhan/ompl_tutorials/build/CMakeFiles/edit_cache.dir
-/home/emirhan/ompl_tutorials/build/CMakeFiles/demo_RigidBodyPlanning.dir
