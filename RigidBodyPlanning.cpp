@@ -149,9 +149,6 @@ void planWithSimpleSetup()
     // create a random start state
     ob::ScopedState<ob::SE3StateSpace> start(space);
     start.random();
-    std::cout << "************************************" << std::endl;
-    start.setX(0.5);
-    std::cout << "************************************" << std::endl;
 
     // create a random goal state
     ob::ScopedState<> goal(space);
