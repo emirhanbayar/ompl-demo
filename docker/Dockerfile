@@ -1,30 +1,21 @@
 FROM ros:noetic-ros-base
 
-ENV QT_QPA_PLATFORM=offscreen
+# Set QT_DEBUG_PLUGINS to 1 to inspect errors while running GUI
 ENV QT_DEBUG_PLUGINS=1
 
+# Settings to be able to use the GUI  
 ENV DISPLAY=$DISPLAY
 ENV XAUTHORITY=$XAUTH
-
 VOLUME $XAUTH:$XAUTH
-
-ENV ROS_UNDERLAY /ws/devel
-ENV CATKIN_WS $(realpath $ROS_UNDERLAY/..)
 
 # Install dependencies
 RUN apt-get update
 RUN apt-get install wget
-    
-RUN apt-get install -y xserver-xorg-video-all
-RUN apt-get update && apt-get install -y \
-    libgl1-mesa-glx \
-    libgl1-mesa-dri \
-    && rm -rf /var/lib/apt/lists/*
-RUN usermod -a -G video <username>
 
-WORKDIR $ROS_UNDERLAY/..
+# Set the workspace where the OMPL will be installed.
+WORKDIR ~/ws
 
-# Install OMPL and dependencies
+# Install OMPL
 RUN wget https://ompl.kavrakilab.org/install-ompl-ubuntu.sh && \
     chmod u+x install-ompl-ubuntu.sh && \
     ./install-ompl-ubuntu.sh --app
