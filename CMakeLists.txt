@@ -30,4 +30,4 @@ endmacro(add_ompl_executable)
 
 # Add executables
 add_ompl_executable(main src/main.cpp)
-add_ompl_executable(benchmark src/benchmark.cpp)
+# add_ompl_executable(benchmark src/benchmark.cpp)

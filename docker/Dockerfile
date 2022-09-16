@@ -13,10 +13,17 @@ RUN apt-get update
 RUN apt-get install wget
 
 # Set the workspace where the OMPL will be installed.
-WORKDIR ~/ws
+WORKDIR $HOME/ws
 
 # Install OMPL
 RUN wget https://ompl.kavrakilab.org/install-ompl-ubuntu.sh && \
     chmod u+x install-ompl-ubuntu.sh && \
     ./install-ompl-ubuntu.sh --app
+
+WORKDIR /usr/local/include/
+
+RUN mv ompl-1.5/* ./ && \
+    rm -rf ompl-1.5
+
+WORKDIR $HOME/ws
     
