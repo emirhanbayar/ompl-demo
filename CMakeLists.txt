@@ -11,7 +11,11 @@ set (CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 set (CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 
 # Set compiler flags. Add -g for debugging.
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -L/usr/local/lib -lompl")
+
+link_directories(/usr/local/lib)
+link_directories(/usr/local/lib/ompl)
+
 
 # Macro for adding executable
 macro(add_ompl_executable executable_name)
@@ -26,3 +30,4 @@ endmacro(add_ompl_executable)
 
 # Add executables
 add_ompl_executable(main src/main.cpp)
+add_ompl_executable(benchmark src/benchmark.cpp)
